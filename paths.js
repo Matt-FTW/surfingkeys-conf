@@ -12,7 +12,7 @@ const paths = {
   favicons: "assets/favicons",
   faviconsManifest: "favicons.json",
   gulpfile: path.basename(gulpfilePath),
-  installDir: platforms.getConfigHome(),
+  installDir: `${platforms.getConfigHome()}/browser/extensions`,
   srcDir: "src",
   output: "surfingkeys.js",
   pkgJson: "package.json",
