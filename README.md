@@ -805,60 +805,76 @@ You will need to modify it to contain the proper path to your `surfingkeys-conf`
 ## Screenshots
 
 ##### AUR
+
 ![AUR screenshot](./assets/screenshots/au.png)
 
 ##### amazon
+
 ![amazon screenshot](./assets/screenshots/az.png)
 
 ##### define
+
 ![define screenshot](./assets/screenshots/de.png)
 
 ##### dockerhub
+
 ![dockerhub screenshot](./assets/screenshots/dh.png)
 
 ##### domainr
+
 ![domainr screenshot](./assets/screenshots/do.png)
 
 ##### firefox-addons
+
 ![firefox-addons screenshot](./assets/screenshots/fa.png)
 
 ##### github
+
 ![github screenshot](./assets/screenshots/gh.png)
 
 ##### hackernews
+
 ![hackernews screenshot](./assets/screenshots/hn.png)
 
 ##### hoogle
+
 ![hoogle screenshot](./assets/screenshots/ho.png)
 
 ##### mdn
+
 ![mdn screenshot](./assets/screenshots/md.png)
 
 ##### reddit
+
 ![reddit screenshot](./assets/screenshots/re-01.png)
 
 ##### reddit 2
+
 ![reddit screenshot](./assets/screenshots/re-02.png)
 
 ##### thesaurus
+
 ![thesaurus screenshot](./assets/screenshots/th.png)
 
 ##### unicode
+
 ![unicode screenshot](./assets/screenshots/un.png)
 
 ##### wolframalpha
+
 ![wolframalpha screenshot](./assets/screenshots/wa-01.png)
 
 ##### wolframalpha 2
+
 ![wolframalpha screenshot](./assets/screenshots/wa-02.png)
 
 ##### wikipedia
+
 ![wikipedia screenshot](./assets/screenshots/wp.png)
 
 ##### youtube
+
 ![youtube screenshot](./assets/screenshots/yt.png)
-
-
 
 ## Copyright
 
