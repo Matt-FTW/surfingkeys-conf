@@ -8,7 +8,7 @@ export default {
     hintCharacters: "qwertasdfgzxcvb",
     omnibarSuggestionTimeout: 500,
     richHintsForKeystroke: 1,
-    defaultSearchEngine: "dd",
+    defaultSearchEngine: "b",
     stealFocusOnLoad: false,
     theme,
   },
@@ -17,10 +17,10 @@ export default {
   searchEngines,
 
   // Leader for site-specific mappings
-  siteleader: "<Space>",
+  siteleader: "a",
 
   // Leader for OmniBar searchEngines
-  searchleader: "a",
+  searchleader: "s",
 
   // Array containing zero or more log levels to enable: log, warn, error
   logLevels: [
