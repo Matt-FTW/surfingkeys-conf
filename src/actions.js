@@ -54,6 +54,10 @@ actions.scrollToHash = (hash = null) => {
   e.scrollIntoView({ behavior: "smooth" })
 }
 
+actions.openLast = () => {
+  RUNTIME("openLast")
+}
+
 // URL Manipulation/querying
 // -------------------------
 actions.vimEditURL = () =>
