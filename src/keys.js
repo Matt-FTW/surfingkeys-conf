@@ -44,6 +44,12 @@ const unmaps = {
   searchAliases: {
     s: ["g", "d", "b", "e", "w", "s", "h", "y"],
   },
+  pages: [
+    {
+      url: /matt-startpage.vercel.app/,
+      maps: ["t", "r", "f"],
+    },
+  ],
 }
 
 const maps = {}
