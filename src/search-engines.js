@@ -802,6 +802,16 @@ completions.ka = {
     }),
 }
 
+// Brave
+completions.b = {
+  alias: "b",
+  name: "brave",
+  search: "https://search.brave.com/search?q=",
+  compl: "https://search.brave.com/api/suggest?q=",
+}
+
+completions.b.callback = (response) => JSON.parse(response.text)[1]
+
 //  ****** Elixir ****** //
 
 // Hex.pm
