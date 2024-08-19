@@ -7,6 +7,7 @@ const {
   mapkey,
   map,
   unmap,
+  unmapAllExcept,
   Clipboard,
   Front,
   removeSearchAlias,
@@ -111,6 +112,10 @@ const main = async () => {
       Object.entries(unmaps.searchAliases).forEach(([leader, items]) => {
         items.forEach((v) => removeSearchAlias(v, leader))
       })
+    }
+
+    if (unmaps.pages) {
+      unmaps.pages.forEach((p) => unmapAllExcept(p.maps, p.url))
     }
   }
 

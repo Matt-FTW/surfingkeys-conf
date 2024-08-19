@@ -98,6 +98,12 @@ maps.global = [
     description: "Open omnibar",
   },
   {
+    alias: "u",
+    category: categories.tabs,
+    description: "Open last closed tab",
+    callback: actions.openLast,
+  },
+  {
     alias: "gh",
     category: categories.scroll,
     description: "Scroll to element targeted by URL hash",
