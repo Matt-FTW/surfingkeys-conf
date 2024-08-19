@@ -133,7 +133,7 @@ maps.global = [
     description: "Copy link as Markdown",
     callback: () =>
       util.createHints("a[href]", (a) =>
-        Clipboard.write(`[${a.innerText}](${a.href})`)
+        Clipboard.write(`[${a.innerText}](${a.href})`),
       ),
   },
   {
@@ -367,7 +367,7 @@ maps["www.google.com"] = [
     callback: () =>
       util.createHints(
         googleSearchResultSelector,
-        actions.openAnchor({ newTab: true, active: false })
+        actions.openAnchor({ newTab: true, active: false }),
       ),
   },
   {
@@ -404,7 +404,7 @@ maps["duckduckgo.com"] = [
     callback: () =>
       util.createHints(
         ddgSelector,
-        actions.openAnchor({ newTab: true, active: false })
+        actions.openAnchor({ newTab: true, active: false }),
       ),
   },
   {
@@ -446,7 +446,7 @@ maps["youtube.com"] = [
     callback: () =>
       util.createHints(
         "*[id='video-title']",
-        actions.openAnchor({ newTab: true })
+        actions.openAnchor({ newTab: true }),
       ),
   },
   {
@@ -470,7 +470,7 @@ maps["youtube.com"] = [
       actions.dispatchMouseEvents(
         document.querySelector("#movie_player.ytp-fullscreen-button"),
         "mousedown",
-        "click"
+        "click",
       ),
   },
   {
@@ -733,7 +733,7 @@ maps["twitter.com"] = [
     callback: () =>
       document
         .querySelector(
-          "a[role='button'][data-testid='SideNav_NewTweet_Button']"
+          "a[role='button'][data-testid='SideNav_NewTweet_Button']",
         )
         .click(),
   },
@@ -747,7 +747,7 @@ maps["twitter.com"] = [
     description: "Goto tweet",
     callback: () =>
       util.createHints(
-        "article, article div[data-focusable='true'][role='link'][tabindex='0']"
+        "article, article div[data-focusable='true'][role='link'][tabindex='0']",
       ),
   },
 ]
@@ -764,7 +764,6 @@ maps["bsky.app"] = [
     callback: actions.by.copyPostID,
   },
 ]
-
 
 maps["reddit.com"] = [
   {
@@ -803,7 +802,7 @@ maps["reddit.com"] = [
     callback: () =>
       util.createHints(
         ".title",
-        actions.openAnchor({ newTab: true, active: false })
+        actions.openAnchor({ newTab: true, active: false }),
       ),
   },
   {
@@ -817,7 +816,7 @@ maps["reddit.com"] = [
     callback: () =>
       util.createHints(
         ".comments",
-        actions.openAnchor({ newTab: true, active: false })
+        actions.openAnchor({ newTab: true, active: false }),
       ),
   },
 ]
@@ -864,7 +863,7 @@ maps["news.ycombinator.com"] = [
     callback: () =>
       util.createHints(
         ".subline>a[href^='item']",
-        actions.openAnchor({ newTab: true, active: false })
+        actions.openAnchor({ newTab: true, active: false }),
       ),
   },
   {
@@ -903,7 +902,7 @@ maps["producthunt.com"] = [
     description: "View product",
     callback: () =>
       util.createHints(
-        "ul[class^='postsList_'] > li > div[class^='item_'] > a"
+        "ul[class^='postsList_'] > li > div[class^='item_'] > a",
       ),
   },
   {
@@ -935,7 +934,7 @@ maps["behance.net"] = [
     callback: () =>
       util.createHints(
         ".rf-project-cover__title",
-        actions.openAnchor({ newTab: true, active: false })
+        actions.openAnchor({ newTab: true, active: false }),
       ),
   },
 ]
@@ -964,7 +963,7 @@ maps["wikipedia.org"] = [
     description: "View page",
     callback: () =>
       util.createHints(
-        "#bodyContent :not(sup):not(.mw-editsection) > a:not([rel=nofollow])"
+        "#bodyContent :not(sup):not(.mw-editsection) > a:not([rel=nofollow])",
       ),
   },
   {
@@ -1313,13 +1312,20 @@ maps["claude.ai"] = [
     alias: "i",
     leader: "",
     description: "Focus input",
-    callback: () => setTimeout(() => Hints.dispatchMouseClick(document.querySelector(".ProseMirror[contenteditable=true]")), 0),
+    callback: () =>
+      setTimeout(
+        () =>
+          Hints.dispatchMouseClick(
+            document.querySelector(".ProseMirror[contenteditable=true]"),
+          ),
+        0,
+      ),
   },
 ]
 
 const registerDOI = (
   domain,
-  provider = actions.doi.providers.meta_citation_doi
+  provider = actions.doi.providers.meta_citation_doi,
 ) => {
   if (!maps[domain]) {
     maps[domain] = []
@@ -1348,7 +1354,7 @@ if (priv.doi_handler) {
   registerDOI("apa.org", () =>
     document
       .querySelector(".citation a")
-      ?.innerText?.replace(/^https:\/\/doi\.org\//, "")
+      ?.innerText?.replace(/^https:\/\/doi\.org\//, ""),
   )
   registerDOI("ashpublications.org")
   registerDOI("asnjournals.org")
@@ -1365,7 +1371,7 @@ if (priv.doi_handler) {
   registerDOI("elifesciences.org", () =>
     document
       .querySelector("meta[name='dc.identifier']")
-      ?.content?.replace(/^doi:/, "")
+      ?.content?.replace(/^doi:/, ""),
   )
   registerDOI("embopress.org")
   registerDOI("emerald.com", actions.doi.providers.meta_dcIdentifier_doi)
@@ -1378,12 +1384,12 @@ if (priv.doi_handler) {
   registerDOI("go.gale.com")
   registerDOI(
     "ieee.org",
-    () => document.querySelector(".stats-document-abstract-doi a")?.innerText
+    () => document.querySelector(".stats-document-abstract-doi a")?.innerText,
   )
   registerDOI("ingentaconnect.com", () =>
     document
       .querySelector("meta[name='DC.identifier']")
-      ?.content?.replace(/^info:doi\//, "")
+      ?.content?.replace(/^info:doi\//, ""),
   )
   registerDOI("jacc.or", actions.doi.providers.meta_dcIdentifier_doi)
   registerDOI("jamanetwork.com")
@@ -1394,16 +1400,16 @@ if (priv.doi_handler) {
   registerDOI("journals.lww.com")
   registerDOI(
     "journals.physiology.org",
-    actions.doi.providers.meta_dcIdentifier_doi
+    actions.doi.providers.meta_dcIdentifier_doi,
   )
   registerDOI("journals.plos.org")
   registerDOI(
     "journals.sagepub.com",
-    actions.doi.providers.meta_dcIdentifier_doi
+    actions.doi.providers.meta_dcIdentifier_doi,
   )
   registerDOI(
     "journals.uchicago.edu",
-    actions.doi.providers.meta_dcIdentifier_doi
+    actions.doi.providers.meta_dcIdentifier_doi,
   )
   registerDOI("jst.go.jp")
   registerDOI("karger.com")
@@ -1413,7 +1419,7 @@ if (priv.doi_handler) {
   registerDOI("mdpi.com")
   registerDOI(
     "msp.org",
-    () => document.querySelector(".paper-doi a")?.innerText
+    () => document.querySelector(".paper-doi a")?.innerText,
   )
   registerDOI("nature.com")
   registerDOI("nejm.org", actions.doi.providers.meta_dcIdentifier_doi)
@@ -1429,7 +1435,7 @@ if (priv.doi_handler) {
   registerDOI("research.manchester.ac.uk")
   registerDOI(
     "royalsocietypublishing.org",
-    actions.doi.providers.meta_dcIdentifier_doi
+    actions.doi.providers.meta_dcIdentifier_doi,
   )
   registerDOI("rupress.org")
   registerDOI("science.org", actions.doi.providers.meta_dcIdentifier_doi)
@@ -1443,7 +1449,7 @@ if (priv.doi_handler) {
   registerDOI("thelancet.com")
   registerDOI(
     "worldscientific.com",
-    actions.doi.providers.meta_dcIdentifier_doi
+    actions.doi.providers.meta_dcIdentifier_doi,
   )
 }
 

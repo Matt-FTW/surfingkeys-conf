@@ -47,7 +47,7 @@ const googleCustomSearch = (opts) => {
           <div class="title"><strong>${htmlPurify(s.htmlTitle)}</strong></div>
           <div>${htmlPurify(s.htmlSnippet)}</div>
         </div>
-      `
+      `,
       ),
     priv: true,
     ...opts,
@@ -152,8 +152,8 @@ completions.at.callback = async (response) => {
         <img style="width:60px" src="${icon}" alt="${s.Name}">
         <div>
           <div class="title"><strong>${prefix}${htmlPurify(
-      title
-    )}</strong></div>
+            title,
+          )}</strong></div>
           <span>${htmlPurify(s.TagLine || s.Description || "")}</span>
         </div>
       </div>
@@ -253,7 +253,7 @@ completions.so = {
 
 completions.so.callback = (response) =>
   JSON.parse(response.text).items.map((s) =>
-    urlItem(`[${s.score}] ${s.title}`, s.link, { query: false })
+    urlItem(`[${s.score}] ${s.title}`, s.link, { query: false }),
   )
 
 // StackExchange - all sites
@@ -346,7 +346,7 @@ completions.vw.callback = (response) =>
   JSON.parse(response.text)[1].map((r) =>
     urlItem(r, `https://vim.fandom.com/wiki/${encodeURIComponent(r)}`, {
       query: false,
-    })
+    }),
   )
 
 // ****** Shopping & Food ****** //
@@ -423,7 +423,7 @@ completions.un.callback = (response) => {
         (word) =>
           `${word[0]?.toUpperCase() ?? ""}${
             word.length > 1 ? word.slice(1) : ""
-          }`
+          }`,
       )
       .join(" ")
   const codeSpanStyle =
@@ -440,7 +440,7 @@ completions.un.callback = (response) => {
         <span style="${codeSpanStyle}">&amp;#${parseInt(value, 16)};</span>
         <span>${titleCase(name.toLowerCase())}</span>
       </div>
-    `
+    `,
   )
 }
 
@@ -460,7 +460,7 @@ const parseDatamuseRes = (res, o = {}) => {
     ) {
       for (const d of r.defs.slice(
         0,
-        opts.maxDefs <= -1 ? undefined : opts.maxDefs
+        opts.maxDefs <= -1 ? undefined : opts.maxDefs,
       )) {
         const ds = d.split("\t")
         const partOfSpeech = `(${ds[0]})`
@@ -604,7 +604,7 @@ completions.wa.callback = (response, { query }) => {
             <div class="title"><strong>Did you mean...?</strong></div>
             <div class="title">${s.val}</div>
           </div>
-        `
+        `,
       )
     }
     return [
@@ -665,7 +665,7 @@ completions.wa.callback = (response, { query }) => {
     <div>
       <div class="title"><strong>${r.title}</strong></div>
       ${htmlForEach(r.values)}
-    </div>`
+    </div>`,
   )
 }
 
@@ -821,7 +821,7 @@ completions.hx.callback = (response) =>
       <div>${s.downloads?.all ? `[↓${s.downloads.all}]` : ""}</div>
       <div>${s.meta?.description ?? ""}</div>
     </div>
-  `
+  `,
   )
 
 // hexdocs
@@ -844,7 +844,7 @@ completions.hd.callback = (response) =>
       <div>${s.downloads?.all ? `[↓${s.downloads.all}]` : ""}</div>
       <div>${s.meta?.description ?? ""}</div>
     </div>
-  `
+  `,
   )
 
 // ****** Golang ****** //
@@ -907,7 +907,7 @@ completions.ho.callback = (response) =>
     return suggestionItem({ url: s.url })`
     <div>
       <div class="title" style="font-size: 1.1em; font-weight: bold">${htmlPurify(
-        s.item
+        s.item,
       )}</div>
       ${pkgInfo}
       <div style="padding: 0.5em">${htmlPurify(s.docs)}</div>
@@ -944,7 +944,7 @@ completions.ci.getData = async () => {
     return JSON.parse(storedData)
   }
   const data = JSON.parse(
-    await runtimeHttpRequest("https://caniuse.com/data.json")
+    await runtimeHttpRequest("https://caniuse.com/data.json"),
   )
   localStorage.set(storageKey, JSON.stringify(data))
   return data
@@ -1002,7 +1002,7 @@ completions.md.callback = (response) => {
         <div style="font-size:0.8em"><em>${s.slug}</em></div>
         <div>${s.summary}</div>
       </div>
-    `
+    `,
   )
 }
 
@@ -1021,7 +1021,7 @@ completions.np.callback = (response) =>
     const date = s.package?.date ? prettyDate(new Date(s.package.date)) : ""
     const flags = s.flags
       ? Object.keys(s.flags).map(
-          (f) => htmlNode`[<span style='color:#ff4d00'>⚑</span> ${f}] `
+          (f) => htmlNode`[<span style='color:#ff4d00'>⚑</span> ${f}] `,
         )
       : []
     return suggestionItem({ url: s.package.links.npm })`
@@ -1051,14 +1051,16 @@ completions.ts = {
 
 completions.ts.callback = async (response) => {
   const res = JSON.parse(response.text)
-  return Object.entries(res.hits.reduce((acc, hit) => {
-    const lvl0 = hit.hierarchy.lvl0
-    if (!acc[lvl0]) {
-      acc[lvl0] = []
-    }
-    acc[lvl0].push(hit)
-    return acc
-  }, {}))
+  return Object.entries(
+    res.hits.reduce((acc, hit) => {
+      const lvl0 = hit.hierarchy.lvl0
+      if (!acc[lvl0]) {
+        acc[lvl0] = []
+      }
+      acc[lvl0].push(hit)
+      return acc
+    }, {}),
+  )
     .sort(([lvl0A], [lvl0B]) => lvl0A.localeCompare(lvl0B))
     .flatMap(([lvl0, hits]) => {
       return hits.map((hit) => {
@@ -1071,7 +1073,7 @@ completions.ts.callback = async (response) => {
             }
             return `${acc ? acc + " > " : ""}${name}`
           },
-          ""
+          "",
         )
         const title = hit.hierarchy[lvl]
         const desc = hit.content
@@ -1122,7 +1124,7 @@ completions.hn.callback = (response) => {
         title = s.objectID
     }
     const url = `https://news.ycombinator.com/item?id=${encodeURIComponent(
-      s.objectID
+      s.objectID,
     )}`
     return suggestionItem({ url })`
       <div>
@@ -1150,8 +1152,8 @@ completions.tw.callback = (response, { query }) => {
     results.unshift(
       urlItem(
         query,
-        `https://twitter.com/${encodeURIComponent(query.replace(/^@/, ""))}`
-      )
+        `https://twitter.com/${encodeURIComponent(query.replace(/^@/, ""))}`,
+      ),
     )
   }
   return results
@@ -1176,28 +1178,28 @@ completions.re.thumbs = {
 
 completions.re.callback = async (response, { query }) => {
   const [_, sub, __, q = ""] = query.match(
-    /^\s*\/?(r\/[a-zA-Z0-9_]+)(\s+(.*))?/
+    /^\s*\/?(r\/[a-zA-Z0-9_]+)(\s+(.*))?/,
   ) ?? [null, null, null, query]
   if (sub && q) {
     response = {
       text: await runtimeHttpRequest(
         `https://api.reddit.com/${encodeURIComponent(
-          sub
+          sub,
         )}/search?syntax=plain&sort=relevance&restrict_sr=on&limit=20&q=${encodeURIComponent(
-          q
-        )}`
+          q,
+        )}`,
       ),
     }
   } else if (sub) {
     const res = await runtimeHttpRequest(
       `https://www.reddit.com/api/search_reddit_names.json?typeahead=true&exact=false&query=${encodeURIComponent(
-        sub
-      )}`
+        sub,
+      )}`,
     )
     return JSON.parse(res).names.map((name) =>
       urlItem(`r/${name}`, `https://reddit.com/r/${encodeURIComponent(name)}`, {
         query: `r/${name}`,
-      })
+      }),
     )
   }
   return JSON.parse(response.text).data.children.map(({ data }) => {
@@ -1216,17 +1218,17 @@ completions.re.callback = async (response, { query }) => {
             <strong><span style="font-size: 1.2em; margin-right: 0.2em">↑</span>${
               data.score
             }</strong> ${
-      data.title
-    } <span style="font-size: 0.8em; opacity: 60%">(${data.domain})</span>
+              data.title
+            } <span style="font-size: 0.8em; opacity: 60%">(${data.domain})</span>
           </div>
           <div>
             <span style="font-size: 0.8em"><span style="color: opacity: 70%">r/${
               data.subreddit
             }</span> • <span style="color: opacity: 70%">${
-      data.num_comments ?? "unknown"
-    }</span> <span style="opacity: 60%">comments</span> • <span style="opacity: 60%">submitted ${relDate} by</span> <span style="color: opacity: 70%">${
-      data.author
-    }</span></span>
+              data.num_comments ?? "unknown"
+            }</span> <span style="opacity: 60%">comments</span> • <span style="opacity: 60%">submitted ${relDate} by</span> <span style="color: opacity: 70%">${
+              data.author
+            }</span></span>
           </div>
         </div>
       </div>
@@ -1320,7 +1322,7 @@ completions.hf.callback = (response) => {
           <div><strong>${m.id}</strong></div>
           <div><span style="font-size: 0.9em; opacity: 70%">model</span></div>
         </div>
-     `
+     `,
     ),
     ...res.datasets.map(
       (d) =>
@@ -1331,7 +1333,7 @@ completions.hf.callback = (response) => {
           <div><strong>${d.id}</strong></div>
           <div><span style="font-size: 0.9em; opacity: 70%">dataset</span></div>
         </div>
-     `
+     `,
     ),
   ]
 }
