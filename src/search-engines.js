@@ -362,49 +362,6 @@ completions.az = {
 
 completions.az.callback = (response) => JSON.parse(response.text)[1]
 
-// Craigslist
-completions.cl = {
-  alias: "cl",
-  name: "craigslist",
-  search: "https://www.craigslist.org/search/sss?query=",
-  compl:
-    "https://www.craigslist.org/suggest?v=12&type=search&cat=sss&area=1&term=",
-}
-
-completions.cl.callback = (response) => JSON.parse(response.text)
-
-// EBay
-completions.eb = {
-  alias: "eb",
-  name: "ebay",
-  search: "https://www.ebay.com/sch/i.html?_nkw=",
-  compl: "https://autosug.ebay.com/autosug?callback=0&sId=0&kwd=",
-}
-
-completions.eb.callback = (response) => JSON.parse(response.text).res.sug
-
-// Yelp
-completions.yp = {
-  alias: "yp",
-  name: "yelp",
-  search: "https://www.yelp.com/search?find_desc=",
-  compl: "https://www.yelp.com/search_suggest/v2/prefetch?prefix=",
-}
-
-completions.yp.callback = (response) => {
-  const res = JSON.parse(response.text).response
-  const words = []
-  res.forEach((r) => {
-    r.suggestions.forEach((s) => {
-      const w = s.query
-      if (words.indexOf(w) === -1) {
-        words.push(w)
-      }
-    })
-  })
-  return words
-}
-
 // ****** General References, Calculators & Utilities ****** //
 completions.un = {
   alias: "un",
@@ -812,50 +769,12 @@ completions.b = {
 
 completions.b.callback = (response) => JSON.parse(response.text)[1]
 
-//  ****** Elixir ****** //
 
-// Hex.pm
-completions.hx = {
-  alias: "hx",
-  name: "hex",
-  search: "https://hex.pm/packages?sort=downloads&search=",
-  compl: "https://hex.pm/api/packages?sort=downloads&hx&search=",
 }
 
-completions.hx.callback = (response) =>
-  JSON.parse(response.text).map(
-    (s) =>
-      suggestionItem({ url: s.html_url })`
-    <div>
-      <div class="title">${s.repository}/<strong>${s.name}</strong></div>
-      <div>${s.downloads?.all ? `[↓${s.downloads.all}]` : ""}</div>
-      <div>${s.meta?.description ?? ""}</div>
-    </div>
-  `,
-  )
 
-// hexdocs
-// Same as hex but links to documentation pages
-completions.hd = {
-  alias: "hd",
-  name: "hexdocs",
-  search: "https://hex.pm/packages?sort=downloads&search=",
-  compl: "https://hex.pm/api/packages?sort=downloads&hd&search=",
 }
 
-completions.hd.callback = (response) =>
-  JSON.parse(response.text).map(
-    (s) =>
-      suggestionItem({
-        url: `https://hexdocs.pm/${encodeURIComponent(s.name)}`,
-      })`
-    <div>
-      <div class="title">${s.repository}/<strong>${s.name}</strong></div>
-      <div>${s.downloads?.all ? `[↓${s.downloads.all}]` : ""}</div>
-      <div>${s.meta?.description ?? ""}</div>
-    </div>
-  `,
-  )
 
 // ****** Golang ****** //
 
@@ -885,56 +804,6 @@ completions.gg = googleCustomSearch({
 //   }
 //   return urlItem(prefix + s.path, `https://godoc.org/${s.path}`)
 // })
-
-// ****** Haskell ****** //
-
-// Hackage
-// TODO: Re-enable
-// completions.ha = {
-//   alias:  "ha",
-//   name:   "hackage",
-//   search: "https://hackage.haskell.org/packages/search?terms=",
-//   compl:  "https://hackage.haskell.org/packages/search.json?terms=",
-// }
-//
-// completions.ha.callback = (response) => JSON.parse(response.text)
-//   .map((s) => urlItem(s.name, `https://hackage.haskell.org/package/${s.name}`))
-
-// Hoogle
-completions.ho = {
-  alias: "ho",
-  name: "hoogle",
-  search: "https://www.haskell.org/hoogle/?hoogle=",
-  compl: "https://www.haskell.org/hoogle/?mode=json&hoogle=",
-}
-
-completions.ho.callback = (response) =>
-  JSON.parse(response.text).map((s) => {
-    const pkgInfo =
-      s.package.name && s.module.name
-        ? htmlNode`<div style="font-size:0.8em; margin-bottom: 0.8em; margin-top: 0.8em">[${s.package.name}] ${s.module.name}</div>`
-        : ""
-    return suggestionItem({ url: s.url })`
-    <div>
-      <div class="title" style="font-size: 1.1em; font-weight: bold">${htmlPurify(
-        s.item,
-      )}</div>
-      ${pkgInfo}
-      <div style="padding: 0.5em">${htmlPurify(s.docs)}</div>
-    </div>
-  `
-  })
-
-// Haskell Wiki
-completions.hw = {
-  alias: "hw",
-  name: "haskellwiki",
-  search: "https://wiki.haskell.org/index.php?go=go&search=",
-  compl:
-    "https://wiki.haskell.org/api.php?action=opensearch&format=json&formatversion=2&namespace=0&limit=10&suggest=true&search=",
-}
-
-completions.hw.callback = (response) => JSON.parse(response.text)[1]
 
 // ****** HTML, CSS, JavaScript, NodeJS, ... ****** //
 
