@@ -760,21 +760,41 @@ completions.ka = {
 }
 
 // Brave
-completions.b = {
-  alias: "b",
-  name: "brave",
+completions.bb = {
+  alias: "bs",
+  name: "brave-search",
   search: "https://search.brave.com/search?q=",
   compl: "https://search.brave.com/api/suggest?q=",
 }
 
-completions.b.callback = (response) => JSON.parse(response.text)[1]
+completions.bb.callback = (response) => JSON.parse(response.text)[1]
 
-
+completions.bi = {
+  alias: "bi",
+  name: "brave-images",
+  search: "https://search.brave.com/images?q=",
+  compl: "https://search.brave.com/api/suggest?q=",
 }
 
+completions.bi.callback = (response) => JSON.parse(response.text)[1]
 
+completions.bn = {
+  alias: "bn",
+  name: "brave-news",
+  search: "https://search.brave.com/news?q=",
+  compl: "https://search.brave.com/api/suggest?q=",
 }
 
+completions.bn.callback = (response) => JSON.parse(response.text)[1]
+
+completions.bv = {
+  alias: "bv",
+  name: "brave-videos",
+  search: "https://search.brave.com/videos?q=",
+  compl: "https://search.brave.com/api/suggest?q=",
+}
+
+completions.bv.callback = (response) => JSON.parse(response.text)[1]
 
 // ****** Golang ****** //
 
@@ -970,7 +990,26 @@ completions.ts.callback = async (response) => {
     })
 }
 
+// ****** Other coding ****** //
+completions.cd = {
+  alias: "cd",
+  name: "search-code",
+  search: "https://searchcode.com/?q=",
+}
+
+completions.ch = {
+  alias: "ch",
+  name: "cheatsheets",
+  search: "https://cheatsheets.zip/?q=",
+}
+
 // ****** Social Media & Entertainment ****** //
+
+completions.tW = {
+  alias: "tW",
+  name: "twitch",
+  search: "https://www.twitch.tv/search?term=",
+}
 
 // Hacker News (YCombinator)
 completions.hn = {
@@ -1215,6 +1254,84 @@ completions.hf.callback = (response) => {
      `,
     ),
   ]
+}
+
+// ****** Music ****** //
+
+completions.ay = {
+  alias: "ay",
+  name: "aoty",
+  search: "https://www.albumoftheyear.org/search/?q=",
+}
+
+completions.gn = {
+  alias: "gn",
+  name: "genius",
+  search: "https://genius.com/search?q=",
+}
+
+completions.lf = {
+  alias: "lf",
+  name: "lastfm",
+  search: "https://www.last.fm/search?q=",
+}
+
+completions.ym = {
+  alias: "ym",
+  name: "youtube-music",
+  search: "https://music.youtube.com/search?q=",
+}
+
+completions.st = {
+  alias: "sp",
+  name: "spotify",
+  search: "https://open.spotify.com/search/",
+}
+
+completions.td = {
+  alias: "td",
+  name: "tidal",
+  search: "https://listen.tidal.com/search?q=",
+}
+
+// ****** Gaming ****** //
+
+completions.st = {
+  alias: "st",
+  name: "steam",
+  search: "https://store.steampowered.com/search/?term=",
+}
+
+completions.gd = {
+  alias: "gd",
+  name: "ggdeals",
+  search: "https://gg.deals/search/?title=",
+}
+
+completions.hl = {
+  alias: "hl",
+  name: "howlongtobeat",
+  search: "https://www.howlongtobeat.com/?q=",
+}
+
+// ****** Art ****** //
+
+completions.up = {
+  alias: "up",
+  name: "unsplash",
+  search: "https://unsplash.com/s/photos/",
+}
+
+completions.pi = {
+  alias: "pi",
+  name: "pinterest",
+  search: "https://www.pinterest.com/search/pins/?q=",
+}
+
+completions.px = {
+  alias: "px",
+  name: "pixiv",
+  search: "https://www.pixiv.net/tags/",
 }
 
 export default completions
