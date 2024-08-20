@@ -47,7 +47,7 @@ const unmaps = {
   pages: [
     {
       url: /matt-startpage.vercel.app/,
-      maps: ["t", "r", "f"],
+      maps: ["t", "r", "f", "x"],
     },
   ],
 }
