@@ -1,6 +1,6 @@
 {
   "root": true,
-  "extends": "airbnb-base",
+  "extends": ["prettier"],
 
   "parserOptions": {
     "ecmaVersion": "latest"
@@ -19,8 +19,8 @@
   },
 
   "rules": {
-    "semi": ["error", "never"],
-    "comma-dangle": ["warn", "always-multiline"],
+    "semi": ["warn", "always"],
+    "comma-dangle": ["error", "only-multiline"],
     "quotes": ["warn", "double"],
     "no-cond-assign": ["error", "except-parens"],
 
@@ -31,30 +31,6 @@
     "implicit-arrow-linebreak": "off",
 
     "import/extensions": "off",
-    "import/no-extraneous-dependencies": "off",
-
-    "key-spacing": [
-      "warn",
-      {
-        "singleLine": {
-          "beforeColon": false,
-          "afterColon": true
-        },
-        "multiLine": {
-          "beforeColon": false,
-          "afterColon": true,
-          "align": "value"
-        }
-      }
-    ],
-
-    "indent": [
-      "warn",
-      2,
-      {
-        "SwitchCase": 0,
-        "VariableDeclarator": { "var": 2, "let": 2, "const": 3 }
-      }
-    ]
+    "import/no-extraneous-dependencies": "off"
   }
 }
