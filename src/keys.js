@@ -105,6 +105,12 @@ maps.global = [
     description: "Open omnibar",
   },
   {
+    alias: "<Space><Space>",
+    map: "t",
+    category: categories.omnibar,
+    description: "Open omnibar",
+  },
+  {
     alias: "u",
     category: categories.tabs,
     description: "Open last closed tab",
