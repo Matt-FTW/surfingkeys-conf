@@ -760,14 +760,14 @@ completions.ka = {
 }
 
 // Brave
-completions.bb = {
+completions.bs = {
   alias: "bs",
   name: "brave-search",
   search: "https://search.brave.com/search?q=",
   compl: "https://search.brave.com/api/suggest?q=",
 }
 
-completions.bb.callback = (response) => JSON.parse(response.text)[1]
+completions.bs.callback = (response) => JSON.parse(response.text)[1]
 
 completions.bi = {
   alias: "bi",
