@@ -17,7 +17,7 @@ export default `
 :root {
   /* Font */
   --font: 'JetBrainsMono Nerd Font';
-  --font-size: 13px;
+  --font-size: 14.0px;
   --font-weight: bold;
 
   --fg: #cad3f5;
