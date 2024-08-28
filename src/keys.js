@@ -48,7 +48,7 @@ const unmaps = {
   pages: [
     {
       url: /matt-startpage.vercel.app/,
-      maps: ["t", "r", "f", "x"],
+      maps: ["t", "r", "f", "x", "E", "R"],
     },
   ],
 }
@@ -67,6 +67,18 @@ maps.global = [
     category: categories.mouseClick,
     description: "Open link URL in vim editor",
     callback: actions.previewLink,
+  },
+  {
+    alias: "K",
+    map: "E",
+    category: categories.tabs,
+    description: "Prev tab",
+  },
+  {
+    alias: "J",
+    map: "R",
+    category: categories.tabs,
+    description: "Next tab",
   },
   {
     alias: "<Ctrl-u>",
