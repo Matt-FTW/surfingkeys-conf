@@ -1,7 +1,7 @@
 import actions from "./actions.js"
 import api from "./api.js"
-import help from "./help.js"
 import priv from "./conf.priv.js"
+import help from "./help.js"
 import util from "./util.js"
 
 const { categories } = help
@@ -48,7 +48,7 @@ const unmaps = {
   pages: [
     {
       url: /matt-startpage.vercel.app/,
-      maps: ["t", "r", "f", "x", "E", "R"],
+      maps: ["t", "r", "f", "x", "E", "R", "T"],
     },
   ],
 }
@@ -105,6 +105,12 @@ maps.global = [
     description: "Forwards on history",
   },
   {
+    alias: "t",
+    map: "T",
+    category: categories.tabs,
+    description: "Switch Tabs",
+  },
+  {
     alias: "d",
     map: "x",
     category: categories.tabs,
@@ -112,9 +118,21 @@ maps.global = [
   },
   {
     alias: "oo",
-    map: "t",
     category: categories.omnibar,
     description: "Open omnibar",
+    callback: () => Front.openOmnibar({ type: "URLs" }),
+  },
+  {
+    alias: "ob",
+    category: categories.omnibar,
+    description: "Seach Bookmarks",
+    callback: () => Front.openOmnibar({ type: "Bookmarks" }),
+  },
+  {
+    alias: "ot",
+    category: categories.tabs,
+    description: "Search tabs",
+    callback: () => Front.openOmnibar({ type: "Tabs" }),
   },
   {
     alias: "u",
