@@ -50,6 +50,10 @@ const unmaps = {
       url: /matt-startpage.vercel.app/,
       maps: ["t", "r", "f", "x", "E", "R", "T"],
     },
+    {
+      url: /mail.proton.me/,
+      maps: ["t", "f", "E", "T"],
+    },
   ],
 }
 
