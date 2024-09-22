@@ -61,6 +61,12 @@ const maps = {}
 
 maps.global = [
   {
+    alias: "<Alt-t>",
+    map: "<Alt-s>",
+    category: categories.misc,
+    description: "Toggle SurfingKeys",
+  },
+  {
     alias: "F",
     map: "gf",
     category: categories.mouseClick,
