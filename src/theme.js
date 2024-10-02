@@ -115,7 +115,7 @@ input {
 }
 
 .sk_theme #sk_omnibarSearchResult ul li.focused {
-  background: var(--border);
+  background: #363a4f;
 }
 
 .sk_theme #sk_omnibarSearchArea {
