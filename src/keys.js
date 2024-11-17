@@ -17,6 +17,7 @@ const unmaps = {
     "oe",
     "ow",
     "oy",
+    "ox",
     "cp",
     ";cp",
     ";ap",
@@ -141,8 +142,14 @@ maps.global = [
   {
     alias: "ot",
     category: categories.tabs,
-    description: "Search tabs",
+    description: "Search Tabs",
     callback: () => Front.openOmnibar({ type: "Tabs" }),
+  },
+  {
+    alias: "U",
+    category: categories.tabs,
+    description: "Recently Closed Tabs",
+    callback: () => Front.openOmnibar({ type: "RecentlyClosed" }),
   },
   {
     alias: "u",
