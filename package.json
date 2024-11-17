@@ -8,9 +8,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "gulp": "npm exec gulp --",
     "lint": "eslint src gulpfile.js webpack.config.js",
-    "build": "npm run gulp build",
     "serve": "npm run gulp serve",
-    "install": "npm run gulp install"
+    "install": "npm run gulp install",
+    "build": "npm run gulp build",
+    "watch": "npm run gulp watch"
   },
   "repository": {
     "type": "git",

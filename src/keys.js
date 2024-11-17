@@ -247,11 +247,6 @@ maps.global = [
     callback: actions.editSettings,
   },
   {
-    alias: "gS",
-    category: categories.chromeURLs,
-    description: "Open Chrome settings",
-  },
-  {
     alias: "=W",
     category: categories.misc,
     description: "Lookup whois information for domain",
@@ -540,7 +535,7 @@ maps["youtube.com"] = [
     description: "Toggle fullscreen",
     callback: () =>
       actions.dispatchMouseEvents(
-        document.querySelector("#movie_player.ytp-fullscreen-button"),
+        document.querySelector("#movie_player .ytp-fullscreen-button"),
         "mousedown",
         "click",
       ),
@@ -1366,16 +1361,12 @@ maps["ikea.com"] = [
   },
 ]
 
-maps["chat.openai.com"] = [
+maps["chatgpt.com"] = [
   {
-    alias: "n",
-    description: "New chat",
-    callback: () => actions.cg.newChat(),
-  },
-  {
-    alias: "a",
-    description: "Open chat",
-    callback: () => util.createHints([...actions.cg.getChatLinks()]),
+    alias: "i",
+    leader: "",
+    description: "Focus input",
+    callback: () => setTimeout(() => Hints.dispatchMouseClick(document.querySelector("#prompt-textarea")), 0),
   },
 ]
 

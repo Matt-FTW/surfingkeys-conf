@@ -1,0 +1,7 @@
+start_directory: /home/matt/dev/projects/surfingkeys-conf
+session_name: surfingkeys-conf
+windows:
+  - window_name: editor
+    panes:
+      - shell_command:
+          - nvim
