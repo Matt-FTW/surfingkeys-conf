@@ -6,7 +6,7 @@ import util from "./util.js"
 
 const { categories } = help
 
-const { Clipboard, Front, Hints } = api
+const { Clipboard, Front, Hints, cmap } = api
 
 // Remove undesired default mappings
 const unmaps = {
@@ -1366,7 +1366,12 @@ maps["chatgpt.com"] = [
     alias: "i",
     leader: "",
     description: "Focus input",
-    callback: () => setTimeout(() => Hints.dispatchMouseClick(document.querySelector("#prompt-textarea")), 0),
+    callback: () =>
+      setTimeout(
+        () =>
+          Hints.dispatchMouseClick(document.querySelector("#prompt-textarea")),
+        0,
+      ),
   },
 ]
 
@@ -1385,6 +1390,10 @@ maps["claude.ai"] = [
       ),
   },
 ]
+
+// Omnibar bindings
+cmap("<Ctrl-j>", "<Tab>")
+cmap("<Ctrl-k>", "<Shift-Tab>")
 
 const registerDOI = (
   domain,
