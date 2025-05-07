@@ -49,7 +49,7 @@ const unmaps = {
   pages: [
     {
       url: /matt-startpage.vercel.app/,
-      maps: ["t", "r", "f", "x", "E", "R", "T"],
+      maps: ["t", "r", "f", "x", "E", "R", "T", "b"],
     },
     {
       url: /mail.proton.me/,
@@ -66,6 +66,16 @@ maps.global = [
     map: "<Alt-s>",
     category: categories.misc,
     description: "Toggle SurfingKeys",
+  },
+  {
+    alias: "<Ctrl-t>",
+    category: categories.misc,
+    description: "Open Startpage",
+    callback: () =>
+      actions.openLink("https://matt-startpage.vercel.app/", {
+        newTab: true,
+        active: true,
+      }),
   },
   {
     alias: "F",
@@ -116,43 +126,31 @@ maps.global = [
     description: "Forwards on history",
   },
   {
-    alias: "t",
-    map: "T",
-    category: categories.tabs,
-    description: "Switch Tabs",
-  },
-  {
     alias: "d",
     map: "x",
     category: categories.tabs,
     description: "Close a tab",
   },
   {
-    alias: "oo",
+    alias: "<Alt-Space>",
     category: categories.omnibar,
     description: "Open omnibar",
     callback: () => Front.openOmnibar({ type: "URLs" }),
   },
   {
-    alias: "ob",
-    category: categories.omnibar,
-    description: "Seach Bookmarks",
-    callback: () => Front.openOmnibar({ type: "Bookmarks" }),
-  },
-  {
-    alias: "ot",
+    alias: "t",
     category: categories.tabs,
     description: "Search Tabs",
     callback: () => Front.openOmnibar({ type: "Tabs" }),
   },
   {
-    alias: "U",
+    alias: "u",
     category: categories.tabs,
     description: "Recently Closed Tabs",
     callback: () => Front.openOmnibar({ type: "RecentlyClosed" }),
   },
   {
-    alias: "u",
+    alias: "U",
     category: categories.tabs,
     description: "Open last closed tab",
     callback: actions.openLast,
@@ -350,12 +348,6 @@ maps.global = [
     map: "gf",
     category: categories.mouseClick,
     description: "Open a link in non-active new tab",
-  },
-  {
-    alias: "oh",
-    category: categories.omnibar,
-    description: "Open URL from history",
-    callback: () => Front.openOmnibar({ type: "History" }),
   },
   // {
   //   alias:       "\\A",
