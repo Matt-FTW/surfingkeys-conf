@@ -4,9 +4,11 @@ import searchEngines from "./search-engines.js"
 
 export default {
   settings: {
+    digitForRepeat: false,
     hintAlign: "left",
     hintCharacters: "qwertasdfgzxcvb",
     omnibarSuggestionTimeout: 500,
+    focusFirstCandidate: false,
     richHintsForKeystroke: 1,
     defaultSearchEngine: "bs",
     stealFocusOnLoad: false,
