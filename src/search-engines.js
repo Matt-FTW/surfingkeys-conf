@@ -1123,8 +1123,8 @@ completions.re.callback = async (response, { query }) => {
   return JSON.parse(response.text).data.children.map(({ data }) => {
     const thumb = data.thumbnail?.match(/^https?:\/\//)
       ? data.thumbnail
-      : completions.re.thumbs[data.thumbnail] ??
-        completions.re.thumbs["default"]
+      : (completions.re.thumbs[data.thumbnail] ??
+        completions.re.thumbs["default"])
     const relDate = prettyDate(new Date(parseInt(data.created, 10) * 1000))
     return suggestionItem({
       url: encodeURI(`https://reddit.com${data.permalink}`),
@@ -1332,6 +1332,78 @@ completions.px = {
   alias: "px",
   name: "pixiv",
   search: "https://www.pixiv.net/tags/",
+}
+
+/**
+ * @param {"crates"|"docs"} kind - The kind of completions to return.
+ * @returns {function} A callback function that takes a response object and returns an array of completion items.
+ */
+const cratesCb = (kind) => (response) => {
+  const res = JSON.parse(response.text)
+  return res.crates.map((s) => {
+    const title = s.name
+    const url =
+      kind === "crates"
+        ? `https://crates.io/crates/${s.name}`
+        : `https://docs.rs/${s.name}`
+    let meta = ""
+    if (s.downloads) {
+      meta += `[↓${s.downloads}] `
+    }
+    if (s.recent_downloads) {
+      meta += `[↓${s.recent_downloads} recent] `
+    }
+    if (s.max_version) {
+      meta += `[v${s.max_version}] `
+    }
+    return suggestionItem({ url })`
+      <div>
+        <div class="title"><strong>${title}</strong> ${meta} ${kind}</div>
+        <div>${s.description || ""}</div>
+        <div style="opacity: 0.6; font-weight: bold; font-size: 0.8em">${s.repository || ""}</div>
+      </div>
+    `
+  })
+}
+
+// Crates.io
+completions.rc = {
+  alias: "rc",
+  name: "crates",
+  search: "https://crates.io/search?q=",
+  compl: "https://crates.io/api/v1/crates?t=0&q=",
+  callback: cratesCb("crates"),
+}
+
+// Crates.io (Docs)
+completions.rd = {
+  alias: "rd",
+  name: "crates-docs",
+  search: "https://docs.rs/releases/search?query=",
+  compl: "https://crates.io/api/v1/crates?t=1&q=",
+  callback: cratesCb("docs"),
+}
+
+// Query.rs (Docs for Stdlib + Crates)
+completions.rr = {
+  alias: "rr",
+  name: "query-rs",
+  search: "https://query.rs/redirect/",
+  compl: "https://query.rs/suggest/",
+}
+
+completions.rr.callback = (response) => {
+  const res = JSON.parse(response.text)
+  const items = res[1] ?? []
+  return items.map((s) => {
+    const [title, url] = s.split(" - ", 2)
+    return suggestionItem({ url })`
+      <div>
+        <div class="title"><strong>${title}</strong></div>
+        <div style="opacity: 0.6; font-weight: bold; font-size: 0.8em">${url}</div>
+      </div>
+    `
+  })
 }
 
 export default completions

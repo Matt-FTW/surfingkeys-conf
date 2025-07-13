@@ -396,4 +396,5 @@ input {
   .collapseRichHints {
     animation: none;
   }
+
 */
