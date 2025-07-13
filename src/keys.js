@@ -162,10 +162,10 @@ maps.global = [
     callback: actions.scrollToHash,
   },
   {
-    alias: "gi",
+    alias: "gu",
+    map: ";U",
     category: categories.pageNav,
     description: "Edit current URL with vim editor",
-    callback: actions.vimEditURL,
   },
   {
     alias: "gI",
@@ -649,7 +649,7 @@ maps["github.com"] = [
   {
     // TODO: Add repetition support: 3gu
     leader: "",
-    alias: "gu",
+    alias: "gU",
     description: "Go up one path in the URL (GitHub)",
     callback: actions.gh.goParent,
   },
