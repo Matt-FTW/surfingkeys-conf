@@ -78,6 +78,12 @@ maps.global = [
       }),
   },
   {
+    alias: "<Alt-f>",
+    category: categories.mouseClick,
+    description: "Use Glance from Zen Browser",
+    callback: actions.glance,
+  },
+  {
     alias: "F",
     map: "gf",
     category: categories.mouseClick,

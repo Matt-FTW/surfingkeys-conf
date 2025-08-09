@@ -1238,4 +1238,16 @@ actions.doi.getLink = (provider) => {
   return priv.doi_handler(doi)
 }
 
+actions.glance = () => {
+  Hints.create("*[href]", (element) => {
+    const event = new MouseEvent("click", {
+      altKey: true,
+      bubbles: true,
+      cancelable: true,
+      view: window,
+    })
+    element.dispatchEvent(event)
+  })
+}
+
 export default actions
