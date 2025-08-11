@@ -997,12 +997,6 @@ completions.cd = {
   search: "https://searchcode.com/?q=",
 }
 
-completions.ch = {
-  alias: "ch",
-  name: "cheatsheets",
-  search: "https://cheatsheets.zip/?q=",
-}
-
 // ****** Social Media & Entertainment ****** //
 
 completions.tW = {
