@@ -68,16 +68,6 @@ maps.global = [
     description: "Toggle SurfingKeys",
   },
   {
-    alias: "<Ctrl-t>",
-    category: categories.misc,
-    description: "Open Startpage",
-    callback: () =>
-      actions.openLink("https://matt-startpage.vercel.app/", {
-        newTab: true,
-        active: true,
-      }),
-  },
-  {
     alias: "<Alt-f>",
     category: categories.mouseClick,
     description: "Use Glance from Zen Browser",
